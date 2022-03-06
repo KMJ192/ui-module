@@ -2,7 +2,7 @@ import DatePicker from '@src/atoms/input/DatePicker';
 
 function MainPage() {
   return `
-    ${DatePicker()}
+    ${DatePicker({})}
   `;
 }
 
