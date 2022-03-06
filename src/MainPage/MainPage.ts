@@ -1,6 +1,8 @@
+import DatePicker from '@src/atoms/input/DatePicker';
+
 function MainPage() {
   return `
-    <div>mainpage</div>
+    ${DatePicker()}
   `;
 }
 
