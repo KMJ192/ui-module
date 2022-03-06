@@ -1,0 +1,26 @@
+@mixin date-picker-container($height) {
+  width: 100%;
+  height: $height;
+  display: grid;
+  grid-template-columns: 49.2% 49.2%;
+  grid-gap: 1.6%;
+}
+
+@mixin input() {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  font-size: 24px;
+  padding: 5px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.date-picker-container {
+  &.medium {
+    @include date-picker-container(36px);
+  }
+  .input {
+    @include input();
+  }
+}
