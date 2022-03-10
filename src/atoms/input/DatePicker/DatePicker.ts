@@ -4,9 +4,10 @@ import { useState, useDocument } from '@react';
 import { ObjectType } from 'types/global';
 import { INIT_SIZE, INIT_STATUS } from './DatePickerInitData';
 
+import Calendar from './Calendar';
+
 import classNamse from 'classnames/bind';
 import style from './DatePicker.module.scss';
-import Calendar from './Calendar';
 const cx = classNamse.bind(style);
 
 interface Props {
@@ -59,14 +60,36 @@ function DatePicker({
     };
   });
 
-  return `
-    <div class='${cx('date-picker-container', 'medium')}'>
-      <div class='${cx('input-container')}'>
-        <input id='input-left' type='text' class='${cx('left')}' />
-        <input id='input-right' type='text' class='${cx('right')}' />
-      </div>
-    </div>
-  `;
+  return {
+    tagName: 'div',
+    props: {
+      className: cx('date-picker-container', 'medium'),
+    },
+    childNode: {
+      tagName: 'div',
+      props: {
+        className: cx('input-container'),
+      },
+      childNode: [
+        {
+          tagName: 'input',
+          props: {
+            id: 'input-left',
+            className: cx('left'),
+            type: 'text',
+          },
+        },
+        {
+          tagName: 'input',
+          props: {
+            id: 'input-right',
+            className: cx('right'),
+            type: 'text',
+          },
+        },
+      ],
+    },
+  };
 }
 
 export default DatePicker;
