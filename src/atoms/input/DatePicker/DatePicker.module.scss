@@ -1,9 +1,9 @@
-@mixin date-picker-container($height) {
-  width: 100%;
-  height: $height;
+@mixin input-container($height) {
   display: grid;
   grid-template-columns: 49.2% 49.2%;
   grid-gap: 1.6%;
+  width: 100%;
+  height: $height;
 }
 
 @mixin input() {
@@ -18,9 +18,12 @@
 
 .date-picker-container {
   &.medium {
-    @include date-picker-container(36px);
-  }
-  .input {
-    @include input();
+    width: 100%;
+    .input-container {
+      @include input-container(36px);
+      & > input {
+        @include input();
+      }
+    }
   }
 }
