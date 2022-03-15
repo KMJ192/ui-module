@@ -4,7 +4,7 @@ import { useState, useDocument } from '@react';
 import { ObjectType } from 'types/global';
 import { INIT_SIZE, INIT_STATUS } from './DatePickerInitData';
 
-import Calendar from './Calendar';
+import Calender from './Calendar';
 
 import classNamse from 'classnames/bind';
 import style from './DatePicker.module.scss';
@@ -46,50 +46,37 @@ function DatePicker({
     setIsOpenCalendar(true);
   };
 
+  const onClickArea = (e: MouseEvent) => {
+    const calendar = document.getElementById('date-picker-calendar');
+  };
+
   useDocument(() => {
-    const inputLeft = document.getElementById('input-left');
-    const inputRight = document.getElementById('input-right');
+    const inputLeft = document.getElementById('datepicker-input-left');
+    const inputRight = document.getElementById('datepicker-input-right');
+
+    document.addEventListener('click', onClickArea);
+
     if (inputLeft && inputRight) {
       inputLeft.addEventListener('click', onOpenCalendar);
       inputRight.addEventListener('click', onOpenCalendar);
     }
 
     return () => {
+      document.removeEventListener('click', onClickArea);
       inputLeft?.addEventListener('click', onOpenCalendar);
       inputRight?.addEventListener('click', onOpenCalendar);
     };
   });
 
-  return {
-    tagName: 'div',
-    props: {
-      className: cx('date-picker-container', 'medium'),
-    },
-    childNode: {
-      tagName: 'div',
-      props: {
-        className: cx('input-container'),
-      },
-      childNode: [
-        {
-          tagName: 'input',
-          props: {
-            id: 'input-left',
-            className: cx('left'),
-            type: 'text',
-          },
-        },
-        {
-          tagName: 'input',
-          props: {
-            id: 'input-right',
-            className: cx('right'),
-            type: 'text',
-          },
-        },
-      ],
-    },
-  };
+  return `
+    <div class='${cx('date-picker-container', size)}'>
+      <div class='${cx('input-container')}'>
+        <input id='datepicker-input-left' class='${cx('left')}' type='text'/>
+        <input id='datepicker-input-right' class='${cx('right')}' type='text'/>
+      </div>
+      ${Calender({ isOpenCalendar })}
+    </div>
+  `;
 }
 
 export default DatePicker;

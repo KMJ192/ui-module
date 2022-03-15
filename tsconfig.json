@@ -3,21 +3,18 @@
     "declaration": true,
     "declarationDir": "./build",
     "baseUrl": ".",
-    "outDir": "dist",
     "paths": {
       "@src/*": ["src/*"],
-      "@react/*": ["custom_modules/react/*"],
-      "@router/*": ["custom_modules/router/*"],
-      "@api/*": ["custom_modules/api/*"],
-      "@redux/*": ["custom_modules/redux/*"],
-      "@storage/*": ["custom_modules/storage/*"],
+      "@react/*": ["src/custom_modules/react/*"],
+      "@router/*": ["src/custom_modules/router/*"],
+      "@redux/*": ["src/custom_modules/redux/*"],
+      "@storage/*": ["src/custom_modules/storage/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext", "ES2015"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strict": true,
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitThis": false,
     "noImplicitAny": true,
@@ -25,6 +22,5 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules"],
   "include": [".", "src/**/*", "./types", "declaration.d.ts", "global.d.ts"]
 }

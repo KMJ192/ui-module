@@ -1,6 +1,10 @@
 import React from '@react';
-import type { ReactDOM } from 'custom_modules/react';
+import type { ReactDOM } from '@src/custom_modules/react';
 import type { RouterType } from './types';
+
+window.addEventListener('popstate', () => {
+  React.routeRender();
+});
 
 /**
  * Router
@@ -56,7 +60,6 @@ const Router = (function () {
       ) {
         return element();
       }
-
     }
 
     return NotFound();
